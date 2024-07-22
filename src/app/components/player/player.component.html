@@ -5,7 +5,9 @@
     [attr.src]="'assets/videos/' + currentVideo"
     (timeupdate)="onTimeUpdate($event)"
   ></video>
-  <div class="absolute bottom-[20%] left-[50%] transform -translate-x-1/2 bg-black bg-opacity-80 p-2 px-4">
-    TEST TITLE
+  <div
+    class="absolute bottom-[20%] left-[50%] transform -translate-x-1/2 bg-black bg-opacity-80 p-2 px-4"
+  >
+    {{ this.currentTitle }}
   </div>
 </div>

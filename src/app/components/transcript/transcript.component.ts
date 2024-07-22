@@ -73,6 +73,14 @@ export class TranscriptComponent implements OnInit, OnDestroy {
       this.doesExistTitle(title, currentTime)
     );
     this.scrollToCurrentSubtitle();
+
+    if (this.currentIndex !== null) {
+      this.videoService.currentText.next(
+        this.transcript[this.currentIndex].text
+      );
+    } else {
+      this.videoService.currentText.next(null);
+    }
   }
 
   doesExistTitle(title: Title, currentTime: number) {
