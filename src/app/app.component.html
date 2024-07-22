@@ -1,7 +1,9 @@
-<div class="bg-gray-900 h-screen text-white p-10 grid grid-cols-2 lg:grid-cols-3 gap-4">
-  <div class="flex flex-col justify-center lg:col-span-2">
+<div class="bg-gray-900 min-h-screen text-white p-10 max-md:flex-col max-md:gap-4 md:grid md:grid-cols-[2fr_1fr] gap-4">
+  <div class="flex flex-col md:h-full">
     <app-links></app-links>
-    <app-player></app-player>
+    <app-player class="md:flex-grow"></app-player>
   </div>
-  <app-transcript></app-transcript>
+  <div>
+    <app-transcript></app-transcript>
+  </div>
 </div>
