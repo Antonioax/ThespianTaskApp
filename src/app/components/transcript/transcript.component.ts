@@ -26,4 +26,18 @@ export class TranscriptComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
+
+  toDisplayTime(timestamp: string) {
+    const [hours, minutes, secondsMili] = timestamp.split(':');
+    const seconds = secondsMili.split(',')[0];
+
+    const displayMinutes = parseInt(hours, 10) * 60 + parseInt(minutes);
+    const displaySeconds = parseInt(seconds, 10);
+
+    return (
+      displayMinutes.toString().padStart(2, '0') +
+      ':' +
+      displaySeconds.toString().padStart(2, '0')
+    );
+  }
 }
