@@ -23,7 +23,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
     });
 
     this.titleSub = this.videoService.currentText.subscribe({
-      next: (text) => (this.currentTitle = text),
+      next: (text) => {
+        this.currentTitle = text ? text : null;
+        console.log(text);
+      },
     });
   }
 

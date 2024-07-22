@@ -69,18 +69,22 @@ export class TranscriptComponent implements OnInit, OnDestroy {
   }
 
   updateTranscript(currentTime: number) {
+    if (this.transcript.length === 0) {
+      this.videoService.currentText.next(null);
+      return;
+    }
+
     this.currentIndex = this.transcript.findIndex((title) =>
       this.doesExistTitle(title, currentTime)
     );
-    this.scrollToCurrentSubtitle();
 
-    if (this.currentIndex !== null) {
-      this.videoService.currentText.next(
-        this.transcript[this.currentIndex].text
-      );
-    } else {
+    if (this.currentIndex === (-1 || null)) {
       this.videoService.currentText.next(null);
+      return;
     }
+
+    this.scrollToCurrentSubtitle();
+    this.videoService.currentText.next(this.transcript[this.currentIndex].text);
   }
 
   doesExistTitle(title: Title, currentTime: number) {
