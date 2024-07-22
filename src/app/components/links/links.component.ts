@@ -10,7 +10,7 @@ import { VideoService } from '../../services/video.service';
 export class LinksComponent {
   constructor(private videoService: VideoService) {}
 
-  onChange(newVideo: string) {
-    this.videoService.changeTo(newVideo);
+  onChange(newVideo: string, newTitle: string) {
+    this.videoService.changeTo(newVideo, newTitle);
   }
 }

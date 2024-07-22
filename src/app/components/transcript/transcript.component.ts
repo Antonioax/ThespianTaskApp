@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title, TitleService } from '../../services/title.service';
+import { VideoService } from "../../services/video.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-transcript',
@@ -11,10 +13,14 @@ export class TranscriptComponent implements OnInit {
   transcript: Title[] = [];
   currentIndex: number | null = null;
 
-  constructor(private titleService: TitleService) {}
+  titleSub!: Subscription;
+
+  constructor(private titleService: TitleService, private videoService: VideoService) {}
 
   ngOnInit() {
-    this.loadTitles('assets/titles/caption1.srt');
+    this.titleSub = this.videoService.currentTitle.subscribe({next: (title) => {
+      this.loadTitles("assets/titles/" + title);
+    }});
   }
 
   loadTitles(title: string) {
