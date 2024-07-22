@@ -2,11 +2,11 @@
   class="bg-white text-black text-center rounded-xl flex flex-col gap-4 pt-4 pb-4 max-h-[calc(100vh-80px)]"
 >
   <div class="font-semibold text-3xl">Transcript</div>
-  <div #transcriptContainer class="flex flex-col gap-2 px-3 overflow-y-scroll">
+  <div #transcriptContainer class="flex flex-col px-3 overflow-y-scroll">
     @for (t of transcript; track $index) {
     <div
-      class="text-left flex gap-3 {{
-        currentIndex === $index ? 'bg-red-600' : ''
+      class="text-left flex gap-3 p-1 px-3 {{
+        currentIndex === $index ? 'bg-blue-300 rounded-lg' : ''
       }}"
     >
       <div>{{ toDisplayTime(t.start) }}</div>
