@@ -3,5 +3,6 @@
     controls
     #videoPlayer
     [attr.src]="'assets/videos/' + currentVideo"
+    (timeupdate)="onTimeUpdate($event)"
   ></video>
 </div>

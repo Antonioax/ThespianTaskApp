@@ -6,7 +6,8 @@ import { BehaviorSubject } from "rxjs";
 })
 export class VideoService {
   currentVideo = new BehaviorSubject<string>('clip1.mp4');
-  currentTitle = new BehaviorSubject<string>("caption1.srt");
+  currentTitle = new BehaviorSubject<string>('caption1.srt');
+  currentTime = new BehaviorSubject<number>(0);
 
   changeTo(newVideo: string, newTitle: string) {
     this.currentVideo.next(newVideo);

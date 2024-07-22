@@ -23,4 +23,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.videoSub.unsubscribe();
   }
+
+  onTimeUpdate(event: Event){
+    const video = event.target as HTMLVideoElement;
+    this.videoService.currentTime.next(video.currentTime);
+  }
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map } from "rxjs";
+import { map } from "rxjs";
 
 export interface Title{
   id: number;
