@@ -19,7 +19,11 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.videoSub = this.videoService.currentVideo.subscribe({
-      next: (video) => (this.currentVideo = video),
+      next: (video) => {
+        this.currentVideo = video;
+        this.currentTitle = null;
+        this.videoService.currentText.next(null);
+      },
     });
 
     this.titleSub = this.videoService.currentText.subscribe({
