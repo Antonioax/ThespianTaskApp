@@ -4,11 +4,12 @@ import { PlayerComponent } from "./components/player/player.component";
 import { LinksComponent } from "./components/links/links.component";
 import { TranscriptComponent } from "./components/transcript/transcript.component";
 import { VideoService } from "./services/video.service";
+import { SettingsComponent } from "./components/settings/settings.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PlayerComponent, LinksComponent, TranscriptComponent],
+  imports: [RouterOutlet, PlayerComponent, LinksComponent, TranscriptComponent, SettingsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
