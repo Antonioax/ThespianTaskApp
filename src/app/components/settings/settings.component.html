@@ -1,16 +1,32 @@
-<div class="flex items-center gap-2 justify-start px-4">
-    <div class="flex items-center gap-2 justify-center">
-      <label>Subtitles settings</label>
-      <select name="titleSize" id="titleSize" class="bg-blue-950 px-4 py-2 rounded-xl" (change)="onChangeSize($event)">
-        <option value="small">small</option>
-        <option value="medium" selected>medium</option>
-        <option value="large">large</option>
-      </select>
-      <input type="color" id="titleColor" name="titleColor" class="bg-blue-950 px-4 py-2 rounded-xl h-full" (change)="onChangeColor($event)">
-      <select name="titlePosition" id="titlePosition" class="bg-blue-950 px-4 py-2 rounded-xl" (change)="onChangePosition($event)">
-        <option value="upper">upper</option>
-        <option value="base" selected>base</option>
-        <option value="lower">lower</option>
-      </select>
-    </div>
+<div class="flex items-center gap-2 justify-start px-4 flex-wrap">
+  <label class="whitespace-nowrap">Subtitles settings</label>
+  <select
+    name="titleSize"
+    id="titleSize"
+    class="bg-blue-950 px-4 py-2 rounded-xl h-10"
+    (change)="onChangeSize($event)"
+  >
+    <option value="small">small</option>
+    <option value="medium" selected>medium</option>
+    <option value="large">large</option>
+  </select>
+  <div class="bg-blue-950 rounded-xl h-10 aspect-square p-2">
+    <input
+      type="color"
+      id="titleColor"
+      name="titleColor"
+      class="w-full h-full bg-blue-950"
+      (change)="onChangeColor($event)"
+    />
+  </div>
+  <select
+    name="titlePosition"
+    id="titlePosition"
+    class="bg-blue-950 px-4 py-2 rounded-xl h-10"
+    (change)="onChangePosition($event)"
+  >
+    <option value="upper">upper</option>
+    <option value="base" selected>base</option>
+    <option value="lower">lower</option>
+  </select>
 </div>
