@@ -37,6 +37,9 @@ export class SettingsComponent implements OnInit, OnDestroy {
   }
 
   onChangePosition(event: Event){
-
+    const selectSize = event.target as HTMLSelectElement;
+    let settings = this.currentSettings;
+    settings.position = selectSize.value;
+    this.videoService.setSettings(settings);
   }
 }

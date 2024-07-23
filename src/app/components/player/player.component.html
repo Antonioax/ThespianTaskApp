@@ -6,7 +6,7 @@
     (timeupdate)="onTimeUpdate($event)"
   ></video>
   <div
-    class="absolute bottom-[20%] left-[50%] transform -translate-x-1/2 bg-black text-center p-2 px-4 {{
+    class="absolute left-[50%] transform -translate-x-1/2 bg-black text-center p-2 px-4 {{
       currentSettings.size === 'small'
         ? 'text-sm'
         : currentSettings.size === 'medium'
@@ -15,7 +15,15 @@
         ? 'text-xl'
         : ''
     }}
-    
+    {{
+      currentSettings.position === 'upper'
+        ? 'bottom-[30%]'
+        : currentSettings.position === 'base'
+        ? 'bottom-[20%]'
+        : currentSettings.position === 'lower'
+        ? 'bottom-[10%]'
+        : ''
+    }}
     {{ this.currentTitle ? 'bg-opacity-80' : 'bg-opacity-0' }}"
   >
     {{ this.currentTitle }}
