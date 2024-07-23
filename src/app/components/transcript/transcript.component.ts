@@ -117,4 +117,8 @@ export class TranscriptComponent implements OnInit, OnDestroy {
       }
     }
   }
+
+  onTranscriptClick(title: Title) {
+    this.videoService.setTime(this.parseTime(title.start));
+  }
 }

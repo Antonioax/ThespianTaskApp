@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 export interface TitleSettings {
   size: string;
@@ -21,6 +21,8 @@ export class VideoService {
     position: 'base',
   });
 
+  newTime = new Subject<number>();
+
   changeTo(newVideo: string, newTitle: string) {
     this.currentVideo.next(newVideo);
     this.currentTitle.next(newTitle);
@@ -29,5 +31,9 @@ export class VideoService {
   setSettings(settings: TitleSettings) {
     this.currentSettings.next(settings);
     console.log(this.currentSettings.value);
+  }
+
+  setTime(time: number){
+    this.newTime.next(time);
   }
 }

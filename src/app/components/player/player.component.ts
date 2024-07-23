@@ -1,7 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { TitleSettings, VideoService } from '../../services/video.service';
 import { Subscription } from 'rxjs';
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-player',
@@ -18,9 +24,13 @@ export class PlayerComponent implements OnInit, OnDestroy {
   private titleSub!: Subscription;
   private settingsSub!: Subscription;
 
-  constructor(
-    private videoService: VideoService,
-  ) {}
+  public newTime!: number;
+  private newTimeSub!: Subscription;
+
+  @ViewChild('videoPlayer')
+  videoPlayer!: ElementRef<HTMLVideoElement>;
+
+  constructor(private videoService: VideoService) {}
 
   ngOnInit() {
     this.videoSub = this.videoService.currentVideo.subscribe({
@@ -40,12 +50,20 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.settingsSub = this.videoService.currentSettings.subscribe({
       next: (settings) => (this.currentSettings = settings),
     });
+
+    this.newTimeSub = this.videoService.newTime.subscribe({
+      next: (time) => {
+        const videoElement = this.videoPlayer.nativeElement;
+        videoElement.currentTime = time;
+      },
+    });
   }
 
   ngOnDestroy() {
     this.videoSub.unsubscribe();
     this.titleSub.unsubscribe();
     this.settingsSub.unsubscribe();
+    this.newTimeSub.unsubscribe();
   }
 
   onTimeUpdate(event: Event) {
