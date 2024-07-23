@@ -1,10 +1,16 @@
 <div class="flex items-center gap-2 justify-start px-4">
     <div class="flex items-center gap-2 justify-center">
-      <label for="titleSize">Subtitles size</label>
-      <select name="titleSize" id="titleSize" class="bg-blue-950 px-4 py-2 rounded-xl">
-        <option value="">small</option>
-        <option value="">medium</option>
-        <option value="">large</option>
+      <label>Subtitles settings</label>
+      <select name="titleSize" id="titleSize" class="bg-blue-950 px-4 py-2 rounded-xl" (change)="onChangeSize($event)">
+        <option value="small">small</option>
+        <option value="medium" selected>medium</option>
+        <option value="large">large</option>
+      </select>
+      <input type="color" id="titleColor" name="titleColor" class="bg-blue-950 px-4 py-2 rounded-xl h-full" (change)="onChangeColor($event)">
+      <select name="titlePosition" id="titlePosition" class="bg-blue-950 px-4 py-2 rounded-xl" (change)="onChangePosition($event)">
+        <option value="upper">upper</option>
+        <option value="base" selected>base</option>
+        <option value="lower">lower</option>
       </select>
     </div>
 </div>

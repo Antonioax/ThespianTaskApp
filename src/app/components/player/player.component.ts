@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { VideoService } from '../../services/video.service';
+import { TitleSettings, VideoService } from '../../services/video.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -11,9 +11,11 @@ import { Subscription } from 'rxjs';
 export class PlayerComponent implements OnInit, OnDestroy {
   public currentVideo!: string;
   public currentTitle: string | null = null;
+  public currentSettings!: TitleSettings;
 
   private videoSub!: Subscription;
   private titleSub!: Subscription;
+  private settingsSub!: Subscription;
 
   constructor(private videoService: VideoService) {}
 
@@ -29,14 +31,18 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.titleSub = this.videoService.currentText.subscribe({
       next: (text) => {
         this.currentTitle = text ? text : null;
-        console.log(text);
       },
+    });
+
+    this.settingsSub = this.videoService.currentSettings.subscribe({
+      next: (settings) => (this.currentSettings = settings),
     });
   }
 
   ngOnDestroy() {
     this.videoSub.unsubscribe();
     this.titleSub.unsubscribe();
+    this.settingsSub.unsubscribe();
   }
 
   onTimeUpdate(event: Event) {

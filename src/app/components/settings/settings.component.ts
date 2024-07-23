@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { TitleSettings, VideoService } from '../../services/video.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-settings',
@@ -6,4 +8,35 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './settings.component.html',
 })
-export class SettingsComponent {}
+export class SettingsComponent implements OnInit, OnDestroy {
+  public currentSettings!: TitleSettings;
+
+  private settingsSub!: Subscription;
+
+  constructor(private videoService: VideoService) {}
+
+  ngOnInit() {
+    this.settingsSub = this.videoService.currentSettings.subscribe({
+      next: (settings) => this.currentSettings = settings,
+    });
+  }
+
+  ngOnDestroy() {
+    this.settingsSub.unsubscribe();
+  }
+
+  onChangeSize(event: Event) {
+    const selectSize = event.target as HTMLSelectElement;
+    let settings = this.currentSettings;
+    settings.size = selectSize.value;
+    this.videoService.setSettings(settings);
+  }
+
+  onChangeColor(event: Event){
+
+  }
+
+  onChangePosition(event: Event){
+
+  }
+}
