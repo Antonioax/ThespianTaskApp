@@ -1,8 +1,8 @@
 <div
   class="bg-white text-black text-center rounded-xl flex flex-col gap-4 pt-4 pb-4 h-full"
 >
-  <div class="font-semibold text-3xl">Transcript</div>
-  <div #transcriptContainer class="flex-1 flex flex-col px-3 overflow-y-scroll">
+  <div class="font-semibold text-lg sm:text-3xl">Transcript</div>
+  <div #transcriptContainer class="flex-1 flex flex-col px-3 overflow-y-scroll max-sm:text-sm">
     @for (t of transcript; track $index) {
     <div
       class="text-left flex gap-3 p-1 px-3 cursor-pointer {{

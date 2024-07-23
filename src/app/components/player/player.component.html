@@ -12,11 +12,11 @@
     }"
     class="absolute left-[50%] transform -translate-x-1/2 text-center p-2 px-4 z-50 {{
       currentSettings.size === 'small'
-        ? 'text-sm'
+        ? 'text-xs sm:text-sm'
         : currentSettings.size === 'medium'
-        ? 'text-base'
+        ? 'text-sm sm:text-base'
         : currentSettings.size === 'large'
-        ? 'text-xl'
+        ? 'text-base sm:text-lg'
         : ''
     }}
     {{
