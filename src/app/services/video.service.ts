@@ -28,5 +28,6 @@ export class VideoService {
 
   setSettings(settings: TitleSettings) {
     this.currentSettings.next(settings);
+    console.log(this.currentSettings.value);
   }
 }

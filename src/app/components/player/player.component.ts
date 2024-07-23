@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TitleSettings, VideoService } from '../../services/video.service';
 import { Subscription } from 'rxjs';
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: 'app-player',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './player.component.html',
 })
 export class PlayerComponent implements OnInit, OnDestroy {
@@ -17,7 +18,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
   private titleSub!: Subscription;
   private settingsSub!: Subscription;
 
-  constructor(private videoService: VideoService) {}
+  constructor(
+    private videoService: VideoService,
+  ) {}
 
   ngOnInit() {
     this.videoSub = this.videoService.currentVideo.subscribe({

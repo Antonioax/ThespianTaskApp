@@ -17,7 +17,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.settingsSub = this.videoService.currentSettings.subscribe({
-      next: (settings) => this.currentSettings = settings,
+      next: (settings) => (this.currentSettings = settings),
     });
   }
 
@@ -32,11 +32,14 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.videoService.setSettings(settings);
   }
 
-  onChangeColor(event: Event){
-
+  onChangeColor(event: Event) {
+    const selectColor = event.target as HTMLInputElement;
+    let settings = this.currentSettings;
+    settings.color = selectColor.value;
+    this.videoService.setSettings(settings);
   }
 
-  onChangePosition(event: Event){
+  onChangePosition(event: Event) {
     const selectSize = event.target as HTMLSelectElement;
     let settings = this.currentSettings;
     settings.position = selectSize.value;
