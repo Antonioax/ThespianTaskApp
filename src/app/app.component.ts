@@ -17,6 +17,6 @@ export class AppComponent implements OnInit {
   constructor(private videoService: VideoService){}
 
   ngOnInit(){
-    //this.videoService.init();
+    this.videoService.init();
   }
 }
