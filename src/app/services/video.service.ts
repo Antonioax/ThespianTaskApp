@@ -24,6 +24,7 @@ export class VideoService {
   newTime = new Subject<number>();
 
   changeTo(newVideo: string, newTitle: string) {
+    this.currentText.next(null);
     this.currentVideo.next(newVideo);
     this.currentTitle.next(newTitle);
   }
