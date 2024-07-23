@@ -6,7 +6,7 @@
     @for (t of transcript; track $index) {
     <div
       class="text-left flex gap-3 p-1 px-3 {{
-        currentIndex === $index ? 'bg-blue-300 rounded-lg' : ''
+        currentIndex === $index ? 'bg-blue-300 rounded-lg font-semibold' : 'text-black text-opacity-50'
       }}"
     >
       <div>{{ toDisplayTime(t.start) }}</div>
