@@ -56,7 +56,6 @@ export class VideoService {
   }
 
   setTime(time: number) {
-    console.log('Should have done this: ', time);
     this.newTime.next(time + 0.05);
   }
 }

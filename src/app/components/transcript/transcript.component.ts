@@ -47,7 +47,10 @@ export class TranscriptComponent implements OnInit, OnDestroy {
 
   loadTitles(title: string) {
     this.titleService.loadTitle(title).subscribe({
-      next: (titles) => (this.transcript = titles),
+      next: (titles) => {
+        this.transcript = titles;
+        this.updateTranscript(0);
+      },
       error: (err) => console.log(err),
     });
   }

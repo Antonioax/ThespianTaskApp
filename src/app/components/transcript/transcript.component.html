@@ -6,7 +6,9 @@
     @for (t of transcript; track $index) {
     <div
       class="text-left flex gap-3 p-1 px-3 cursor-pointer {{
-        currentIndex === $index ? 'bg-blue-300 rounded-lg font-semibold' : 'text-black text-opacity-50'
+        currentIndex === $index
+          ? 'bg-blue-300 rounded-lg font-semibold'
+          : 'text-black text-opacity-50'
       }}"
       (click)="onTranscriptClick(t)"
     >
