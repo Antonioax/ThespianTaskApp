@@ -34,6 +34,6 @@ export class VideoService {
   }
 
   setTime(time: number){
-    this.newTime.next(time);
+    this.newTime.next(time + 0.05);
   }
 }

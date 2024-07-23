@@ -17,14 +17,13 @@ import { CommonModule } from '@angular/common';
 })
 export class PlayerComponent implements OnInit, OnDestroy {
   public currentVideo!: string;
-  public currentTitle: string | null = null;
+  public currentText: string | null = null;
   public currentSettings!: TitleSettings;
+  public newTime!: number;
 
   private videoSub!: Subscription;
-  private titleSub!: Subscription;
+  private textSub!: Subscription;
   private settingsSub!: Subscription;
-
-  public newTime!: number;
   private newTimeSub!: Subscription;
 
   @ViewChild('videoPlayer')
@@ -34,17 +33,11 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.videoSub = this.videoService.currentVideo.subscribe({
-      next: (video) => {
-        this.currentVideo = video;
-        this.currentTitle = null;
-        this.videoService.currentText.next(null);
-      },
+      next: (video) => (this.currentVideo = video),
     });
 
-    this.titleSub = this.videoService.currentText.subscribe({
-      next: (text) => {
-        this.currentTitle = text ? text : null;
-      },
+    this.textSub = this.videoService.currentText.subscribe({
+      next: (text) => (this.currentText = text ? text : null),
     });
 
     this.settingsSub = this.videoService.currentSettings.subscribe({
@@ -61,7 +54,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.videoSub.unsubscribe();
-    this.titleSub.unsubscribe();
+    this.textSub.unsubscribe();
     this.settingsSub.unsubscribe();
     this.newTimeSub.unsubscribe();
   }

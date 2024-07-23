@@ -6,8 +6,8 @@
     (timeupdate)="onTimeUpdate($event)"
   ></video>
   <div
-    [ngStyle]="{ 'background-color': currentSettings.color, 'display': this.currentTitle ? 'block' : 'none'}"
-    class="absolute left-[50%] transform -translate-x-1/2 text-center p-2 px-4 {{
+    [ngStyle]="{ 'background-color': currentSettings.color, 'display': this.currentText ? 'block' : 'none'}"
+    class="absolute left-[50%] transform -translate-x-1/2 text-center p-2 px-4 z-50 {{
       currentSettings.size === 'small'
         ? 'text-sm'
         : currentSettings.size === 'medium'
@@ -26,6 +26,6 @@
         : ''
     }}"
   >
-    {{ this.currentTitle }}
+    {{ this.currentText }}
   </div>
 </div>
